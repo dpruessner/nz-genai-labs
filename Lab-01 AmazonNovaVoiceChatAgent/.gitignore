@@ -1,0 +1,21 @@
+.DS_Store
+.cursor/
+
+# IDE files
+.idea/
+
+# Build output
+out/
+
+# Logs
+logs/
+
+# Node modules (if applicable for TypeScript project)
+node_modules/
+
+# Build artifacts
+dist/
+
+output/*
+
+package-lock.json
