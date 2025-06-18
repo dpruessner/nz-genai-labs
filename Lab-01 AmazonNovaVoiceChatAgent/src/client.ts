@@ -25,6 +25,8 @@ import {
 } from "./consts";
 import { handleToolCall } from "./hotel-confirmation";
 
+const debug = console.log.bind(console, "DEBUG [client.ts] --");
+
 export interface NovaSonicBidirectionalStreamClientConfig {
   requestHandlerConfig?:
   | NodeHttp2HandlerOptions
@@ -716,6 +718,8 @@ export class NovaSonicBidirectionalStreamClient {
 
   // Stream an audio chunk for a session
   public async streamAudioChunk(sessionId: string, audioData: Buffer): Promise<void> {
+    debug("streamAudioChunk called for session:", sessionId);
+
     const session = this.activeSessions.get(sessionId);
     if (!session || !session.isActive || !session.audioContentId) {
       throw new Error(`Invalid session ${sessionId} for audio streaming`);

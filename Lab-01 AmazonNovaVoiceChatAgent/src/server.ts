@@ -7,7 +7,7 @@ import { NovaSonicBidirectionalStreamClient } from './client';
 import { Buffer } from 'node:buffer';
 
 // Configure AWS credentials
-const AWS_PROFILE_NAME = process.env.AWS_PROFILE || 'bedrock-test';
+const AWS_PROFILE_NAME = process.env.AWS_PROFILE || 'default';
 
 // Create Express app and HTTP server
 const app = express();
@@ -20,7 +20,7 @@ const bedrockClient = new NovaSonicBidirectionalStreamClient({
         maxConcurrentStreams: 10,
     },
     clientConfig: {
-        region: process.env.AWS_REGION || "us-east-1",
+        region: process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION || "us-east-1",
         credentials: fromIni({ profile: AWS_PROFILE_NAME })
     }
 });
